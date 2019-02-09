@@ -9,18 +9,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 
 public class GuestBook implements ActionListener {
-	JPanel panel = new JPanel();
-	JFrame frame = new JFrame();
-	JLabel checkInText = new JLabel();
-	JButton guestButton = new JButton();
-	JButton VIPButton = new JButton();
-	JTextField guestNameField = new JTextField(20);
-	JButton seeAllButton = new JButton();
+	private JPanel panel = new JPanel();
+	private JFrame frame = new JFrame();
+	private JLabel checkInText = new JLabel();
+	private JButton guestButton = new JButton();
+	private JButton VIPButton = new JButton();
+	private JTextField guestNameField = new JTextField(20);
+	private JButton seeAllButton = new JButton();
 	
 	ArrayList <Guest> guestList= new ArrayList <> ();
 
@@ -31,17 +29,15 @@ public class GuestBook implements ActionListener {
 		if(buttonPressed == guestButton) {
 			RegularGuest regularGuest = new RegularGuest(guestNameField.getText());
 			guestList.add(regularGuest);
-			System.out.println(guestList);
 		}
 		
 		if(buttonPressed == VIPButton) {
-			VIPGuest vipGuest = new VIPGuest("VIP: " +guestNameField.getText());
+			VIPGuest vipGuest = new VIPGuest(guestNameField.getText());
 			guestList.add(vipGuest);
-			System.out.println(guestList);
 		}
 		
 		if(buttonPressed == seeAllButton) {
-			JOptionPane.showMessageDialog(null, "The guests checked in are: \n" + guestList);
+			JOptionPane.showMessageDialog(null, "The guests checked in are: \n" + buildNiceList(guestList));
 		}
 
 	}
@@ -70,8 +66,11 @@ public class GuestBook implements ActionListener {
 		guestbook.createUI();
 	}
 	
-	public String buildNiceList(ArrayList list) {
-		return "test";
-		
+	public String buildNiceList(ArrayList<Guest> list) {
+		String niceList = "";
+		for(int i = 0; i < list.size(); i++) {
+			niceList = niceList + list.get(i).getListing() + "\n";
+		}
+		return niceList;
 	}
 }
