@@ -49,7 +49,7 @@ public class GuestBook implements ActionListener {
 	public void createUI() {
 		frame.setVisible(true);
 		frame.add(panel);
-		frame.setSize(300, 300);
+		frame.setSize(400, 200);
 		panel.add(checkInText);
 		checkInText.setText("Welcome to the Hotel California! Please check in below.");
 		panel.add(guestNameField);
