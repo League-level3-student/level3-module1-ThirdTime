@@ -14,9 +14,9 @@ public class _01_IntroToStack {
 		Stack <Double> stack = new Stack <>();
 		
 		//2. Use a loop to push 100 random doubles between 0 and 100 to the Stack.
-		Random ran = new Random();
+		Random randomNumGenerator = new Random();
 		for(int i = 0; i <= 100; i++) {
-			stack.push(ran.nextDouble()*100);
+			stack.push(randomNumGenerator.nextDouble()*100);
 		}
 		
 		//3. Ask the user to enter in two numbers between 0 and 100, inclusive. 
