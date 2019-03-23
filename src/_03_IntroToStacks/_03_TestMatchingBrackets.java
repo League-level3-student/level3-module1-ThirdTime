@@ -18,23 +18,21 @@ public class _03_TestMatchingBrackets {
 		assertFalse(doBracketsMatch("}{"));
 	}
 
-	// USE A STACK TO COMPLETE THE METHOD FOR CHECKING IF EVERY OPENING BRACKET HAS A MATCHING CLOSING BRACKET
-	// To do: solve the last test, which isn't working now because it begins with a }
 	private boolean doBracketsMatch(String b) {
-		Stack <String> bracketList = new Stack<>();
-		
-		for(int i = 0; i < b.length(); i++) {
+		Stack<String> bracketList = new Stack<>();
+
+		for (int i = 0; i < b.length(); i++) {
 			char c = b.charAt(i);
-			if(c == '{') {
+			if (c == '{') {
 				bracketList.push("{");
-			} else if (c == '}') {
+			} else if (c == '}' && !bracketList.empty()) {
 				bracketList.pop();
 			}
 			System.out.println(c);
 		}
-		if(bracketList.empty()) {
+		if (bracketList.empty()) {
 			return true;
-		} else 
+		} else
 			return false;
 	}
 
