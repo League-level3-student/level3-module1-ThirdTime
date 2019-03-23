@@ -19,15 +19,16 @@ public class _03_TestMatchingBrackets {
 	}
 
 	private boolean doBracketsMatch(String b) {
-		Stack<String> bracketList = new Stack<>();
+		Stack<Character> bracketList = new Stack<>();
 
 		for (int i = 0; i < b.length(); i++) {
-			if (b.charAt(i) == '{') {
-				bracketList.push("{");
-			} else if (b.charAt(i) == '}' && !bracketList.empty()) {
+			char c = b.charAt(i);
+			if (c == '{') {
+				bracketList.push(c);
+			} else if (c == '}' && !bracketList.empty()) {
 				bracketList.pop();
 			}
-			System.out.println(b.charAt(i));
+			System.out.println(c);
 		}
 		if (bracketList.empty()) {
 			return true;
