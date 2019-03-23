@@ -22,13 +22,12 @@ public class _03_TestMatchingBrackets {
 		Stack<String> bracketList = new Stack<>();
 
 		for (int i = 0; i < b.length(); i++) {
-			char c = b.charAt(i);
-			if (c == '{') {
+			if (b.charAt(i) == '{') {
 				bracketList.push("{");
-			} else if (c == '}' && !bracketList.empty()) {
+			} else if (b.charAt(i) == '}' && !bracketList.empty()) {
 				bracketList.pop();
 			}
-			System.out.println(c);
+			System.out.println(b.charAt(i));
 		}
 		if (bracketList.empty()) {
 			return true;
