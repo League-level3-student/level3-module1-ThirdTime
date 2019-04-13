@@ -17,7 +17,7 @@ public class _04_TestMatchingBrackets_VER2 {
 		assertTrue(doBracketsMatch("[]{}()"));
 		assertTrue(doBracketsMatch("{[()]}"));
 		assertFalse(doBracketsMatch("{[}]"));
-		assertFalse(doBracketsMatch("{(["));
+		assertFalse(doBracketsMatch("{"));
 	}
 
 	private boolean doBracketsMatch(String b) {
@@ -25,9 +25,9 @@ public class _04_TestMatchingBrackets_VER2 {
 
 		for (int i = 0; i < b.length(); i++) {
 			char c = b.charAt(i);
-			if (c == '{' && c == '[' && c == '(') {
+			if (c == '{' || c == '[' || c == '(') {
 				bracketList.push(c);
-			} else if (c == '}' && c == ']' && c == ')' && !bracketList.empty()) {
+			} else if (c == '}' || c == ']' || c == ')' && !bracketList.empty()) {
 				bracketList.pop();
 			}
 			System.out.println(c);
