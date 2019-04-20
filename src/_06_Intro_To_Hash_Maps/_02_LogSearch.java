@@ -1,7 +1,16 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class _02_LogSearch {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class _02_LogSearch implements ActionListener{
   /* 
 	 * Crate a HashMap of Integers for the keys and Strings for the values.
 	 * Create a GUI with three buttons. 
@@ -29,5 +38,63 @@ public class _02_LogSearch {
 	 * 				is not in the list. 
 	 *
 	 * */
+	
+	//Main UI variables
+	JFrame mainUIFrame = new JFrame();
+	JPanel mainUIPanel = new JPanel();
+	JButton addEntryButton = new JButton();
+	JButton searchByIDButton = new JButton();
+	JButton viewListButton = new JButton();
+	
+	//Add an entry UI variables
+	JFrame addEntryUIFrame = new JFrame();
+	JPanel addEntryUIPanel = new JPanel();
+	JLabel IDLabel = new JLabel();
+	JTextField IDTextField = new JTextField(15);
+	JLabel nameLabel = new JLabel();
+	JTextField nameTextField = new JTextField(15);
+	JButton addNewEntryButton = new JButton();
+	
+	
+	public void createUI() {
+		mainUIFrame.setVisible(true);
+		mainUIFrame.add(mainUIPanel);
+		mainUIFrame.setSize(150, 150);
+		mainUIPanel.add(addEntryButton);
+		addEntryButton.setText("Add an Entry");
+		addEntryButton.addActionListener(this);
+		mainUIPanel.add(searchByIDButton);
+		searchByIDButton.setText("Search By ID");
+		mainUIPanel.add(viewListButton);
+		viewListButton.setText("View List");
+		mainUIFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void addAddEntryUI() {
+		addEntryUIFrame.setVisible(true);
+		addEntryUIFrame.add(addEntryUIPanel);
+		addEntryUIFrame.setSize(400, 100);
+		addEntryUIPanel.add(IDTextField);
+		addEntryUIPanel.add(addNewEntryButton);
+		addNewEntryButton.setText("Add");
+		addNewEntryButton.addActionListener(this);
+		addEntryUIPanel.add(nameTextField);
+		addEntryUIFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public static void main(String[] args) {
+		_02_LogSearch thisClass = new _02_LogSearch();
+		thisClass.createUI();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton buttonClicked = (JButton) e.getSource();
+		if (buttonClicked == addEntryButton) {
+			this.addAddEntryUI();
+		}
+		
+	}
+	
+	
 	
 }
