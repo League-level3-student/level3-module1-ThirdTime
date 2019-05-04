@@ -41,6 +41,7 @@ public class _02_LogSearch implements ActionListener {
 		mainUIFrame.setVisible(true);
 		mainUIFrame.add(mainUIPanel);
 		mainUIPanel.add(addEntryButton);
+		addEntryButton.setText("Add Student");
 		addEntryButton.addActionListener(this);
 		mainUIPanel.add(searchByIDButton);
 		searchByIDButton.setText("Search By ID");
@@ -95,7 +96,7 @@ public class _02_LogSearch implements ActionListener {
 
 		if (buttonClicked == searchByIDButton) {
 			String idNum = JOptionPane.showInputDialog("Enter the ID of the student.");
-			if (listOfStudents.containsKey(idNum) == false) {
+			if (!listOfStudents.containsKey(idNum)) {
 				JOptionPane.showMessageDialog(null, "There is no student with that ID.");
 			} else {
 				JOptionPane.showMessageDialog(null, "The student with that ID is " + listOfStudents.get(idNum) + ".");
@@ -103,9 +104,11 @@ public class _02_LogSearch implements ActionListener {
 		}
 
 		if (buttonClicked == viewListButton) {
+			String listOfIDsAndNames = "";
 			for(String i: listOfStudents.keySet()) {
-				listOfStudentsTextArea.setText(listOfStudentsTextArea.getText() + "ID: " + i + "\n" + "Student: " + listOfStudents.get(i) + "\n \n");
+				listOfIDsAndNames += "ID: " + i + "\nStudent: " + listOfStudents.get(i) + "\n \n";
 			}
+			listOfStudentsTextArea.setText(listOfIDsAndNames);
 			this.addViewListUI();
 		}
 
